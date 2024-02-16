@@ -1,11 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import styles from "./homepage.module.css";
 
 function HomePage() {
-  const { projectName } = useSelector((state) => state.global);
   return (
-    <div>
-      <h1>{projectName}</h1>
+    <div className={styles.container}>
+      <h1>Tein Academy</h1>
     </div>
   );
 }
