@@ -1,9 +1,15 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import router from "./router";
+import MenuLayout from "./layout/menuLayout";
+import ProfileLayout from "./layout/profileLayout";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Ders 1</h1>
+    <div id="mainWrapper">
+      <MenuLayout />
+      <RouterProvider router={router} />
+      <ProfileLayout />
     </div>
   );
 }
