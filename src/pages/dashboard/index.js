@@ -1,11 +1,20 @@
-import React from "react";
 import styles from "./dashboard.module.css";
-import { Link } from "react-router-dom";
+import Info from "./components/info";
+import { useState } from "react";
 
 function Dashboard() {
+  let [isTitleActive, setIsTitleActive] = useState(true);
+
   return (
     <div className={styles.container}>
-      <h1>Tein Academy</h1>
+      {isTitleActive && <h1>Tein Academy</h1>}
+      <Info />
+      <button
+        style={{ backgroundColor: isTitleActive ? "blue" : "red" }}
+        onClick={() => setIsTitleActive(!isTitleActive)}
+      >
+        toggle Title Status Change
+      </button>
     </div>
   );
 }

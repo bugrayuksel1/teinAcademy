@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <MainLayout children={<Dashboard />} />,
   },
   {
-    path: "/groups",
+    path: "/groups/:id/:title",
     element: <MainLayout children={<Groups />} />,
   },
   {

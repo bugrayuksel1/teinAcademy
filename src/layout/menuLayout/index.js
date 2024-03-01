@@ -2,50 +2,33 @@ import React from "react";
 import styles from "./menuLayout.module.css";
 import assets from "../../assets";
 import { Link } from "react-router-dom";
+import MenuItem from "./components/menuItem";
+import { useDispatch } from "react-redux";
+import { changeProjectName } from "../../redux/globalSlice";
 
 function MenuLayout() {
+  const dispatch = useDispatch();
+  console.log("burası menu layout");
   return (
     <div className={styles.container}>
       <div className={styles.logoLayer}>
         <img alt="dfı" src={assets.logos.logo} />
       </div>
       <div className={styles.mainMenu}>
-        <Link to="/">
-          <div className={styles.mainMenuItem}>
-            <img alt="" src={assets.icons.menuIcon1} />
-            <span>Dashboard</span>
-          </div>
-        </Link>
-        <Link to="/grades">
-          <div className={styles.mainMenuItem}>
-            <img alt="" src={assets.icons.menuIcon2} />
-            <span>Grades</span>
-          </div>
-        </Link>
-        <Link to="/class">
-          <div className={styles.mainMenuItem}>
-            <img alt="" src={assets.icons.menuIcon3} />
-            <span>Class</span>
-          </div>
-        </Link>
-        <Link to="/groups">
-          <div className={styles.mainMenuItem}>
-            <img alt="" src={assets.icons.menuIcon4} />
-            <span>Groups</span>
-          </div>
-        </Link>
-        <Link to="/administration">
-          <div className={styles.mainMenuItem}>
-            <img alt="" src={assets.icons.menuIcon5} />
-            <span>Administration</span>
-          </div>
-        </Link>
-        <Link to="/departments">
-          <div className={styles.mainMenuItem}>
-            <img alt="" src={assets.icons.menuIcon6} />
-            <span>Departements</span>
-          </div>
-        </Link>
+        <MenuItem path="/" icon={assets.icons.menuIcon1} text="Dashboard" />
+        <MenuItem path="/grades" icon={assets.icons.menuIcon2} text="Grades" />
+        <MenuItem path="/class" icon={assets.icons.menuIcon3} text="Class" />
+        <MenuItem path="/groups" icon={assets.icons.menuIcon4} text="Groups" />
+        <MenuItem
+          path="/administration"
+          icon={assets.icons.menuIcon5}
+          text="Administration"
+        />
+        <MenuItem
+          path="/departments"
+          icon={assets.icons.menuIcon6}
+          text="Departements"
+        />
       </div>
       <div className={styles.teamsMenu}>
         <div className={styles.teamsMenuTitle}>
@@ -59,6 +42,7 @@ function MenuLayout() {
           <img alt="" src={assets.icons.menuIcon8} />
           <span>Call Meeting</span>
         </div>
+        <button onClick={() => dispatch(changeProjectName())}>Değiştir</button>
       </div>
     </div>
   );

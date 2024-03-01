@@ -7,17 +7,11 @@ const global = createSlice({
     countValue: 0,
   },
   reducers: {
-    incremented: (state) => {
-      state.countValue += 1;
-    },
-    decremented: (state) => {
-      state.countValue -= 1;
-    },
-    sifirla: (state) => {
-      state.countValue = 0;
+    changeProjectName: (state) => {
+      state.projectName = "proje adı değiştirildi.";
     },
   },
 });
 
-export const { incremented, decremented, sifirla } = global.actions;
+export const { changeProjectName } = global.actions;
 export default global.reducer;

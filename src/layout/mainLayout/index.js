@@ -6,7 +6,14 @@ import { useLocation } from "react-router-dom";
 function MainLayout({ children }) {
   const location = useLocation();
 
-  const menuLayout = ["/", "/grades", "/class", "/groups", "/administration"];
+  const menuLayout = [
+    "/",
+    "/grades",
+    "/class",
+    "/groups",
+    "/administration",
+    "/departments",
+  ];
 
   return (
     <div id="mainWrapper">
