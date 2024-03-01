@@ -4,16 +4,22 @@ const users = createSlice({
   name: "users",
   initialState: {
     usersData: [],
+    originalUsersData: [],
   },
   reducers: {
     setUsersData: (state, actions) => {
-      const filteredData = actions.payload.filter(
-        (item) => item.name === "Mrs. Dennis Schulist"
+      state.usersData = actions.payload;
+      state.originalUsersData = actions.payload;
+    },
+    filterUsersData: (state, actions) => {
+      const tempData = [...state.originalUsersData];
+      const filteredData = tempData.filter((e) =>
+        e.name.toLowerCase().includes(actions.payload.toLowerCase())
       );
       state.usersData = filteredData;
     },
   },
 });
 
-export const { setUsersData } = users.actions;
+export const { setUsersData, filterUsersData } = users.actions;
 export default users.reducer;

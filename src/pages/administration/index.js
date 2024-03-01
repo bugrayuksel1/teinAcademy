@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./administration.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { setUsersData } from "../../redux/usersSlice";
+import { setUsersData, filterUsersData } from "../../redux/usersSlice";
 
 function Administration() {
   const dispatch = useDispatch();
@@ -15,12 +15,25 @@ function Administration() {
     dispatch(setUsersData(response.data));
   };
 
+  const filterData = (param) => {
+    dispatch(filterUsersData(param));
+  };
+
   useEffect(() => {
     getUsersData();
   }, []);
 
   return (
     <div className={styles.container}>
+      <div className={styles.inputLabel}>
+        <span className={styles.filterText}>Filtreleme: </span>
+        <input
+          className={styles.inputElement}
+          placeholder="Input filter keys"
+          type="text"
+          onChange={(e) => filterData(e.target.value)}
+        />
+      </div>
       {usersData.map((donenData) => {
         return (
           <div className={styles.userBox}>
@@ -30,6 +43,11 @@ function Administration() {
           </div>
         );
       })}
+      {usersData.length === 0 && (
+        <div>
+          <h1>Kriterlere uygun data bulunamadı.</h1>
+        </div>
+      )}
     </div>
   );
 }
