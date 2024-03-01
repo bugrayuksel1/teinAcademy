@@ -6,20 +6,11 @@ import { useLocation } from "react-router-dom";
 function MainLayout({ children }) {
   const location = useLocation();
 
-  const menuLayout = [
-    "/",
-    "/grades",
-    "/class",
-    "/groups",
-    "/administration",
-    "/departments",
-  ];
-
   return (
     <div id="mainWrapper">
-      {menuLayout.includes(location.pathname) && <MenuLayout />}
+      <MenuLayout />
       {children}
-      {menuLayout.includes(location.pathname) && <ProfileLayout />}
+      <ProfileLayout />
     </div>
   );
 }

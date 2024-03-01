@@ -3,3 +3,7 @@
   height: 100vh;
   background-color: #e8eff6;
 }
+.listItem {
+  margin: 5px;
+  font-size: 12px;
+}

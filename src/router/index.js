@@ -6,6 +6,7 @@ import Departments from "../pages/departments";
 import Class from "../pages/class";
 import Administration from "../pages/administration";
 import MainLayout from "../layout/mainLayout";
+import PostDetail from "../pages/postDetail";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/grades",
     element: <MainLayout children={<Grades />} />,
+  },
+  {
+    path: "/grades/postdetail/:id",
+    element: <MainLayout children={<PostDetail />} />,
   },
   {
     path: "/departments",

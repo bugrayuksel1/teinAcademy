@@ -42,7 +42,6 @@ function MenuLayout() {
           <img alt="" src={assets.icons.menuIcon8} />
           <span>Call Meeting</span>
         </div>
-        <button onClick={() => dispatch(changeProjectName())}>Değiştir</button>
       </div>
     </div>
   );
