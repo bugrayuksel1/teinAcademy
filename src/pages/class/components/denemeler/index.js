@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setPhotos } from "../../../../redux/classSlice";
 
 function Deneme() {
-  const [photos, setPhotos] = useState([]);
+  const dispatch = useDispatch();
+  const { photos } = useSelector((state) => state.klas);
 
   useEffect(() => {
     const fetchPhotos = async () => {
       const response = await axios.get(
         "https://jsonplaceholder.typicode.com/photos"
       );
-      setPhotos(response.data);
+      dispatch(setPhotos(response.data));
     };
     fetchPhotos();
   }, []);
