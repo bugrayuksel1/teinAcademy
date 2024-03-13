@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import global from "./globalSlice";
 import users from "./usersSlice";
 import klas from "./classSlice";
+import grades from "./gradesSlice";
 
 const persistConfig = {
   key: "root",
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   global,
   users,
   klas,
+  grades,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

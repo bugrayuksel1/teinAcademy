@@ -2,38 +2,49 @@ import React, { useEffect, useState } from "react";
 import styles from "./postDetail.module.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { cleanUp, getDetail, getDetailComments } from "../../redux/gradesSlice";
+import assets from "../../assets";
 
 function PostDetail() {
   const params = useParams();
-  const [detailData, setDetailData] = useState({});
-  const [commentData, setCommentData] = useState([]);
-
-  const getDetailData = async () => {
-    const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${params.id}`
-    );
-    setDetailData(response.data);
-  };
-
-  const getDetailComment = async () => {
-    const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${params.id}/comments`
-    );
-    setCommentData(response.data);
-  };
+  const dispatch = useDispatch();
+  const {
+    detailData,
+    detailDataLoading,
+    detailDataError,
+    commentData,
+    commentDataLoading,
+    commentDataError,
+  } = useSelector((state) => state.grades);
 
   useEffect(() => {
-    getDetailData();
-    getDetailComment();
+    dispatch(getDetail({ id: params.id }));
+    dispatch(getDetailComments({ id: params.id }));
+    dispatch(cleanUp());
   }, []);
 
   return (
     <div className={styles.container}>
+      {detailDataLoading && <img alt="loading" src={assets.gifs.loadingGif} />}
+      {detailDataError && (
+        <div>
+          <h2 style={{ color: "red" }}>{detailDataError}</h2>
+        </div>
+      )}
       <div className={styles.detailInfo}>
         <h1>{detailData.title}</h1>
         <h3>{detailData.body}</h3>
       </div>
       <div className={styles.commentInfo}>
+        {commentDataLoading && (
+          <img alt="loading" src={assets.gifs.loadingGif} />
+        )}
+        {commentDataError && (
+          <div>
+            <h2 style={{ color: "red" }}>{commentDataError}</h2>
+          </div>
+        )}
         {commentData.map((comment) => {
           return (
             <div className={styles.commentListItem}>
