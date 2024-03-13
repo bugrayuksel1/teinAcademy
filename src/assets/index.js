@@ -7,6 +7,7 @@ import menuIcon5 from "./icons/menuIcon5.png";
 import menuIcon6 from "./icons/menuIcon6.png";
 import menuIcon7 from "./icons/menuIcon7.png";
 import menuIcon8 from "./icons/menuIcon8.png";
+import loadingGif from "./gifs/ZKZg.gif";
 
 const assets = {
   logos: {
@@ -23,6 +24,9 @@ const assets = {
     menuIcon8,
   },
   images: {},
+  gifs: {
+    loadingGif,
+  },
 };
 
 export default assets;

@@ -1,26 +1,24 @@
 import React, { useEffect, useState } from "react";
 import styles from "./administration.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { setUsersData, filterUsersData } from "../../redux/usersSlice";
+import assets from "../../assets";
+import { getUsersData, filterUsersData, cleanUp } from "../../redux/usersSlice";
 
 function Administration() {
   const dispatch = useDispatch();
-  const { usersData } = useSelector((state) => state.users);
-
-  const getUsersData = async () => {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/users"
-    );
-    dispatch(setUsersData(response.data));
-  };
+  const { usersData, loading, errorMessage } = useSelector(
+    (state) => state.users
+  );
 
   const filterData = (param) => {
     dispatch(filterUsersData(param));
   };
 
   useEffect(() => {
-    getUsersData();
+    dispatch(getUsersData());
+    return () => {
+      dispatch(cleanUp());
+    };
   }, []);
 
   return (
@@ -34,6 +32,12 @@ function Administration() {
           onChange={(e) => filterData(e.target.value)}
         />
       </div>
+      {loading && <img alt="loading gif" src={assets.gifs.loadingGif} />}
+      {errorMessage && (
+        <div>
+          <h2 style={{ color: "red" }}>{errorMessage}</h2>
+        </div>
+      )}
       {usersData.map((donenData) => {
         return (
           <div className={styles.userBox}>
