@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./postDetail.module.css";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanUp, getDetail, getDetailComments } from "../../redux/gradesSlice";
 import assets from "../../assets";
@@ -22,7 +21,7 @@ function PostDetail() {
     dispatch(getDetail({ id: params.id }));
     dispatch(getDetailComments({ id: params.id }));
     dispatch(cleanUp());
-  }, []);
+  }, [dispatch, params.id]);
 
   return (
     <div className={styles.container}>
