@@ -1,27 +1,29 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setPhotos } from "../../../../redux/classSlice";
+import { getPhotos, cleanUp } from "../../../../redux/classSlice";
+import assets from "../../../../assets";
 
 function Deneme() {
   const dispatch = useDispatch();
-  const { photos } = useSelector((state) => state.klas);
+  const { photos, loading, errorMessage } = useSelector((state) => state.klas);
 
   useEffect(() => {
-    const fetchPhotos = async () => {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/photos"
-      );
-      dispatch(setPhotos(response.data));
-    };
-    fetchPhotos();
+    dispatch(getPhotos());
+
     return () => {
-      dispatch(setPhotos([]));
+      dispatch(cleanUp());
     };
   }, []);
 
   return (
     <div className="container">
+      {loading && <img alt="loading" src={assets.gifs.loadingGif} />}
+      {errorMessage && (
+        <div>
+          <h2 style={{ color: "red" }}>{errorMessage}</h2>
+        </div>
+      )}
       {photos.map((photo) => {
         return (
           <div className="photo-container">

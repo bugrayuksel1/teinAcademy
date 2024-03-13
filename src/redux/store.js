@@ -8,7 +8,7 @@ import klas from "./classSlice";
 const persistConfig = {
   key: "root",
   storage,
-  white: ["klas"],
+  whitelist: [],
 };
 
 const rootReducer = combineReducers({
