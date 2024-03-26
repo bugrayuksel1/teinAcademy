@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <MainLayout children={<Dashboard />} />,
   },
   {
-    path: "/groups/:id/:title",
+    path: "/groups/",
     element: <MainLayout children={<Groups />} />,
   },
   {

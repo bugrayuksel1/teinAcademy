@@ -5,6 +5,7 @@ import global from "./globalSlice";
 import users from "./usersSlice";
 import klas from "./classSlice";
 import grades from "./gradesSlice";
+import groups from "./groupsSlice";
 
 const persistConfig = {
   key: "root",
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   users,
   klas,
   grades,
+  groups,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
