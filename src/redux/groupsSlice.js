@@ -2,7 +2,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getUsers = createAsyncThunk("groups/getusers", async () => {
-  const response = await axios.get("http://localhost/users");
+  const response = await axios.post("http://localhost/users", {
+    access_token:
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE3MTE0ODExODgsImV4cCI6MTc0MzAxNzE4OCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsInVzZXJfbmFtZSI6InNlcmthbiIsImZ1bGxuYW1lIjoiYXlkxLFuIiwiRW1haWwiOiJzZXJrYW5AZ21haWwuY29tIn0.I9pZHT9VxaYp_cwPR6DwSDumwOEPHCPz99G7GGpxw3A",
+  });
   return response.data;
 });
 

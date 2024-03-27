@@ -7,6 +7,7 @@ import Class from "../pages/class";
 import Administration from "../pages/administration";
 import MainLayout from "../layout/mainLayout";
 import PostDetail from "../pages/postDetail";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/administration",
-    element: <MainLayout children={<Administration />} />,
+    element: (
+      <PrivateRoute Component={<MainLayout children={<Administration />} />} />
+    ),
   },
 ]);
 

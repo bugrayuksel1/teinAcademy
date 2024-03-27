@@ -6,11 +6,12 @@ import users from "./usersSlice";
 import klas from "./classSlice";
 import grades from "./gradesSlice";
 import groups from "./groupsSlice";
+import user from "./userSlice";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: [],
+  whitelist: ["user"],
 };
 
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   klas,
   grades,
   groups,
+  user,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

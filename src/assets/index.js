@@ -8,6 +8,7 @@ import menuIcon6 from "./icons/menuIcon6.png";
 import menuIcon7 from "./icons/menuIcon7.png";
 import menuIcon8 from "./icons/menuIcon8.png";
 import loadingGif from "./gifs/ZKZg.gif";
+import user from "./images/user.png";
 
 const assets = {
   logos: {
@@ -23,7 +24,9 @@ const assets = {
     menuIcon7,
     menuIcon8,
   },
-  images: {},
+  images: {
+    user,
+  },
   gifs: {
     loadingGif,
   },
