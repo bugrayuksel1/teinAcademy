@@ -14,7 +14,7 @@ const groups = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getUsers.fulfilled, (state, action) => {
-      state.users = action.payload;
+      // state.users = action.payload;
     });
   },
 });

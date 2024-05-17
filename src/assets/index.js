@@ -9,6 +9,7 @@ import menuIcon7 from "./icons/menuIcon7.png";
 import menuIcon8 from "./icons/menuIcon8.png";
 import loadingGif from "./gifs/ZKZg.gif";
 import user from "./images/user.png";
+import errorDialogCloseIcon from "./icons/errorDialogCloseIcon.png";
 
 const assets = {
   logos: {
@@ -23,6 +24,7 @@ const assets = {
     menuIcon6,
     menuIcon7,
     menuIcon8,
+    errorDialogCloseIcon,
   },
   images: {
     user,

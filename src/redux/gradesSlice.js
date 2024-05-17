@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getPosts = createAsyncThunk("grades/getPost", async () => {
   const response = await axios.get(
-    "https://jsonplaceholder.typicode.com/posts"
+    "https://jsonplaceholder.typicode.com/postss"
   );
   return response.data;
 });
