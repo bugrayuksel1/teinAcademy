@@ -5,6 +5,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import ErrorDialog from "./components/errorDialog";
 import { useState } from "react";
+import sha256 from "sha256";
 
 function App() {
   const { userInfo } = useSelector((state) => state.user);
@@ -15,6 +16,12 @@ function App() {
   // request atılırken kullandığımız interceptor. servera gönderdiğimiz datayı değiştirebileceğimiz yer.
   axios.interceptors.request.use(
     function (config) {
+      const hashedPayload = sha256(
+        // payload datasına userInfo'dan s_key'i ekleyip bir hash elde ediyoruz.
+        JSON.stringify({ ...config.data, s_key: userInfo.s_key })
+      );
+      config.headers.hmac = hashedPayload; // elde ettiğimiz hash'i header içinde "hmac" key'i ile request'e ekliyoruz.
+
       config.headers.Authorization = userInfo?.token;
       return config;
     },
@@ -28,7 +35,6 @@ function App() {
   axios.interceptors.response.use(
     function (response) {
       // http hatalarının dışında gelen hata mesajları burada yakalanabilir.
-      console.log("response: ", response);
       if (response?.data?.status === "error") {
         setError(true);
         setErrorMessage(response.data.reason);

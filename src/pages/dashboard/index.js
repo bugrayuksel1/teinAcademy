@@ -1,9 +1,19 @@
 import styles from "./dashboard.module.css";
 import Info from "./components/info";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import sha256 from "sha256";
+import axios from "axios";
 
 function Dashboard() {
-  let [isTitleActive, setIsTitleActive] = useState(true);
+  const [isTitleActive, setIsTitleActive] = useState(true);
+
+  useEffect(() => {
+    axios.post("http://localhost/hmac", {
+      param1: "test1",
+      param2: "test2",
+      param3: "test3",
+    });
+  }, []);
 
   return (
     <div className={styles.container}>
