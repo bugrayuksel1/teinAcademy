@@ -7,6 +7,7 @@ import klas from "./classSlice";
 import grades from "./gradesSlice";
 import groups from "./groupsSlice";
 import user from "./userSlice";
+import error from "./errorSlice";
 
 const persistConfig = {
   key: "root",
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   grades,
   groups,
   user,
+  error,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

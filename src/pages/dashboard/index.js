@@ -1,7 +1,6 @@
 import styles from "./dashboard.module.css";
 import Info from "./components/info";
 import { useEffect, useState } from "react";
-import sha256 from "sha256";
 import axios from "axios";
 
 function Dashboard() {

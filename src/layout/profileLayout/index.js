@@ -4,6 +4,9 @@ import assets from "../../assets";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../../redux/userSlice";
+import { setError } from "../../redux/errorSlice";
+import { toggleRegisterForm } from "../../redux/globalSlice";
+import AtomInput from "../../atomics/atomInput";
 
 function ProfileLayout() {
   const dispatch = useDispatch();
@@ -14,6 +17,16 @@ function ProfileLayout() {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
+    if (userName === "" || password === "") {
+      dispatch(
+        setError({
+          error: true,
+          errorTitle: "Form Input Boş",
+          errorMessage: "Kullanıcı adı ya da şifre boş olamaz.",
+        })
+      );
+      return null;
+    }
     const result = await axios.post("http://localhost/login", {
       userName,
       password,
@@ -28,11 +41,7 @@ function ProfileLayout() {
   };
 
   const handeRegister = async () => {
-    const result = await axios.post("http://localhost/register", {
-      userName,
-      password,
-    });
-    console.log("result:", result);
+    dispatch(toggleRegisterForm());
   };
 
   const handleLogout = () => {
@@ -48,26 +57,22 @@ function ProfileLayout() {
         {!isLoggedIn && (
           <>
             <div className={styles.userName}>
-              <div>
-                <label htmlFor="loginInput">Login</label>
-                <input
-                  onChange={(e) => setUserName(e.target.value)}
-                  id="loginInput"
-                  type="text"
-                  placeholder="User Name..."
-                />
-              </div>
+              <AtomInput
+                title="Login"
+                name="loginInput"
+                type="text"
+                placeHolder="User Name..."
+                onChange={setUserName}
+              />
             </div>
             <div className={styles.password}>
-              <div>
-                <label htmlFor="registerInput">Password</label>
-                <input
-                  onChange={(e) => setPassword(e.target.value)}
-                  id="registerInput"
-                  type="password"
-                  placeholder="Password..."
-                />
-              </div>
+              <AtomInput
+                title="Password"
+                name="registerInput"
+                type="password"
+                placeHolder="Password..."
+                onChange={setPassword}
+              />
             </div>
             <div className={styles.loginInfo}></div>
             <div className={styles.loginButton}>

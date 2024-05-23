@@ -1,14 +1,9 @@
 import React from "react";
 import styles from "./menuLayout.module.css";
 import assets from "../../assets";
-import { Link } from "react-router-dom";
 import MenuItem from "./components/menuItem";
-import { useDispatch } from "react-redux";
-import { changeProjectName } from "../../redux/globalSlice";
 
 function MenuLayout() {
-  const dispatch = useDispatch();
-  console.log("burası menu layout");
   return (
     <div className={styles.container}>
       <div className={styles.logoLayer}>
