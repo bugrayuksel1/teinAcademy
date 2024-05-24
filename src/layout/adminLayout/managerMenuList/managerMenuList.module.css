@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  width: 20%;
+  min-width: 200px;
+  height: 100vh;
+}

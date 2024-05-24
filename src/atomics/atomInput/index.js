@@ -1,7 +1,16 @@
 import React from "react";
 import styles from "./atomInput.module.css";
 
-function AtomInput({ title, name, type, placeHolder, onChange, className }) {
+function AtomInput({
+  title,
+  name,
+  type,
+  placeHolder,
+  onChange,
+  className,
+  value,
+  disabled,
+}) {
   return (
     <div className={`${styles.container} ${className}`}>
       <label htmlFor={name}>{title}</label>
@@ -10,6 +19,8 @@ function AtomInput({ title, name, type, placeHolder, onChange, className }) {
         id={name}
         type={type}
         placeholder={placeHolder}
+        value={value}
+        disabled={disabled}
       />
     </div>
   );

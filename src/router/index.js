@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import routes from "../consts/routes";
 import Dashboard from "../pages/dashboard";
 import Groups from "../pages/groups";
 import Grades from "../pages/grades";
@@ -8,36 +9,60 @@ import Administration from "../pages/administration";
 import MainLayout from "../layout/mainLayout";
 import PostDetail from "../pages/postDetail";
 import PrivateRoute from "./PrivateRoute";
+import Manager from "../pages/manager";
+import AdminLayout from "../layout/adminLayout";
+import UserControl from "../pages/manager/usercontrol";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: routes.home.path,
     element: <MainLayout children={<Dashboard />} />,
   },
   {
-    path: "/groups/",
+    path: routes.groups.path,
     element: <MainLayout children={<Groups />} />,
   },
   {
-    path: "/grades",
+    path: routes.grades.path,
     element: <MainLayout children={<Grades />} />,
   },
   {
-    path: "/grades/postdetail/:id",
+    path: routes.postdetail.path,
     element: <MainLayout children={<PostDetail />} />,
   },
   {
-    path: "/departments",
+    path: routes.departments.path,
     element: <MainLayout children={<Departments />} />,
   },
   {
-    path: "/class",
+    path: routes.class.path,
     element: <MainLayout children={<Class />} />,
   },
   {
-    path: "/administration",
+    path: routes.administration.path,
     element: (
-      <PrivateRoute Component={<MainLayout children={<Administration />} />} />
+      <PrivateRoute
+        route={routes.administration.name}
+        Component={<MainLayout children={<Administration />} />}
+      />
+    ),
+  },
+  {
+    path: routes.manager.path,
+    element: (
+      <PrivateRoute
+        route={routes.manager.name}
+        Component={<AdminLayout children={<Manager />} />}
+      />
+    ),
+  },
+  {
+    path: routes.usercontrol.path,
+    element: (
+      <PrivateRoute
+        route={routes.usercontrol.name}
+        Component={<AdminLayout children={<UserControl />} />}
+      />
     ),
   },
 ]);

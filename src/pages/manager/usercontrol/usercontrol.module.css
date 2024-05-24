@@ -1,0 +1,57 @@
+.container {
+  width: 80%;
+  min-width: calc(100% - 200px);
+  height: auto;
+  min-height: 100vh;
+  background-color: aqua;
+}
+.userList {
+  display: flex;
+  justify-content: space-between;
+}
+.userName {
+  width: 20%;
+}
+.fullName {
+  width: 30%;
+}
+.eMail {
+  width: 30%;
+}
+.role {
+  width: 10%;
+}
+.updateButton {
+  width: 10%;
+}
+.userUpdateForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.formArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #00000050;
+}
+.button {
+  margin-top: 30px;
+}
+.closeIcon {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  cursor: pointer;
+}

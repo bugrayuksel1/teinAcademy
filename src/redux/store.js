@@ -8,6 +8,7 @@ import grades from "./gradesSlice";
 import groups from "./groupsSlice";
 import user from "./userSlice";
 import error from "./errorSlice";
+import userlistSlice from "./userlistSlice";
 
 const persistConfig = {
   key: "root",
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   groups,
   user,
   error,
+  userlistSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
