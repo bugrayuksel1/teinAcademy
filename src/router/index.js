@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import Manager from "../pages/manager";
 import AdminLayout from "../layout/adminLayout";
 import UserControl from "../pages/manager/usercontrol";
+import AddCourse from "../pages/manager/addcourse";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,15 @@ const router = createBrowserRouter([
       <PrivateRoute
         route={routes.usercontrol.name}
         Component={<AdminLayout children={<UserControl />} />}
+      />
+    ),
+  },
+  {
+    path: routes.addcourse.path,
+    element: (
+      <PrivateRoute
+        route={routes.addcourse.name}
+        Component={<AdminLayout children={<AddCourse />} />}
       />
     ),
   },

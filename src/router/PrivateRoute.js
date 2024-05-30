@@ -9,7 +9,10 @@ function PrivateRoute({ route, Component }) {
   const roles = {
     public: true,
     user: isLoggedIn,
-    admin: isLoggedIn && (role === "admin" || role === "superadmin"),
+    editor: role === "editor",
+    admin:
+      isLoggedIn &&
+      (role === "admin" || role === "superadmin" || role === "editor"),
     superadmin: isLoggedIn && role === "superadmin",
   };
 

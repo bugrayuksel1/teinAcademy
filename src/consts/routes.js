@@ -44,6 +44,11 @@ const routes = {
     path: "/manager/usercontrol",
     access: "superadmin",
   },
+  addcourse: {
+    name: "addcourse",
+    path: "/manager/addcourse",
+    access: "editor",
+  },
 };
 
 export default routes;

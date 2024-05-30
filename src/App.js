@@ -15,7 +15,9 @@ function App() {
     function (config) {
       const hashedPayload = sha256(
         // payload datasına userInfo'dan s_key'i ekleyip bir hash elde ediyoruz.
-        JSON.stringify({ ...config.data, s_key: userInfo.s_key })
+        JSON.stringify(
+          decodeURIComponent({ ...config.data, s_key: userInfo.s_key })
+        )
       );
       config.headers.hmac = hashedPayload; // elde ettiğimiz hash'i header içinde "hmac" key'i ile request'e ekliyoruz.
 
