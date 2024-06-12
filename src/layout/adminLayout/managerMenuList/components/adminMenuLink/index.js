@@ -5,7 +5,7 @@ import styles from "./adminMenuLink.module.css";
 function AdminMenuLink({ path, text }) {
   return (
     <Link to={path}>
-      <span>{text}</span>
+      <span className={styles.link}>{text}</span>
     </Link>
   );
 }

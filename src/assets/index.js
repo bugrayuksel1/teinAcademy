@@ -10,6 +10,7 @@ import menuIcon8 from "./icons/menuIcon8.png";
 import loadingGif from "./gifs/ZKZg.gif";
 import user from "./images/user.png";
 import errorDialogCloseIcon from "./icons/errorDialogCloseIcon.png";
+import dropDownIcon from "./icons/dropDownIcon.png";
 
 const assets = {
   logos: {
@@ -25,6 +26,7 @@ const assets = {
     menuIcon7,
     menuIcon8,
     errorDialogCloseIcon,
+    dropDownIcon,
   },
   images: {
     user,

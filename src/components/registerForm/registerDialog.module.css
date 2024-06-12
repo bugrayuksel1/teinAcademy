@@ -8,6 +8,7 @@
   min-width: 100vw;
   min-height: 100vh;
   backdrop-filter: blur(2px);
+  z-index: 99999999;
 }
 .registerFormContainer {
   display: flex;
