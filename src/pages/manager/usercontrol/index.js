@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import AtomInput from "../../../atomics/atomInput";
 import assets from "../../../assets";
 import axios from "axios";
+import UserListItem from "./component/userListItem";
+import AtomButton from "../../../atomics/atomButton";
 
 function UserControl() {
   const dispatch = useDispatch();
@@ -61,6 +63,7 @@ function UserControl() {
           </div>
           <div>
             <AtomInput
+              className={styles.atomInputOverRide}
               title="User Name"
               name="username"
               type="text"
@@ -72,6 +75,7 @@ function UserControl() {
           </div>
           <div>
             <AtomInput
+              className={styles.atomInputOverRide}
               title="Full Name"
               name="fullname"
               type="text"
@@ -82,6 +86,7 @@ function UserControl() {
           </div>
           <div>
             <AtomInput
+              className={styles.atomInputOverRide}
               title="E-Mail"
               name="email"
               type="text"
@@ -92,6 +97,7 @@ function UserControl() {
           </div>
           <div>
             <AtomInput
+              className={styles.atomInputOverRide}
               title="Role"
               name="role"
               type="text"
@@ -101,7 +107,11 @@ function UserControl() {
             />
           </div>
           <div className={styles.button}>
-            <button onClick={handleSubmitUpdateForm}>Submit Update</button>
+            <AtomButton
+              className={styles.testButton}
+              onClick={handleSubmitUpdateForm}
+              text="Submit Update"
+            />
           </div>
         </div>
       </div>
@@ -110,20 +120,14 @@ function UserControl() {
 
   return (
     <div className={styles.container}>
-      {isShowForm && updateForm()}
-      {userList.map((user) => {
-        return (
-          <div className={styles.userList}>
-            <div className={styles.userName}>{user.user_name}</div>
-            <div className={styles.fullName}>{user.full_name}</div>
-            <div className={styles.eMail}>{user.e_mail}</div>
-            <div className={styles.role}>{user.role}</div>
-            <div className={styles.updateButton}>
-              <button onClick={() => listButtonHandler(user)}>Update</button>
-            </div>
-          </div>
-        );
-      })}
+      <div className={styles.userList}>
+        {isShowForm && updateForm()}
+        {userList.map((user) => {
+          return (
+            <UserListItem user={user} listButtonHandler={listButtonHandler} />
+          );
+        })}
+      </div>
     </div>
   );
 }

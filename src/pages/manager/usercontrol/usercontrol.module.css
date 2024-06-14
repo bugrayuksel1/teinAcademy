@@ -3,25 +3,20 @@
   min-width: calc(100% - 200px);
   height: auto;
   min-height: 100vh;
+  margin-left: 20px;
 }
 .userList {
-  display: flex;
-  justify-content: space-between;
+  border: 1px solid rgb(168, 167, 167);
+  max-width: calc(100% - 100px);
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
 }
-.userName {
-  width: 20%;
+.userList > :nth-child(odd) {
+  background-color: #b3c8cf;
 }
-.fullName {
-  width: 30%;
-}
-.eMail {
-  width: 30%;
-}
-.role {
-  width: 10%;
-}
-.updateButton {
-  width: 10%;
+.userList > :nth-child(even) {
+  background-color: #bed7dc;
 }
 .userUpdateForm {
   display: flex;
@@ -33,13 +28,20 @@
   width: 100vw;
   height: 100vh;
 }
+.atomInputOverRide {
+  margin-top: 15px;
+}
+.atomInputOverRide input {
+  width: 350px;
+}
+
 .formArea {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 450px;
   height: 500px;
   background-color: #ffffff;
   border-radius: 15px;
@@ -53,4 +55,7 @@
   right: -10px;
   top: -10px;
   cursor: pointer;
+}
+.testButton {
+  background-color: white !important;
 }
