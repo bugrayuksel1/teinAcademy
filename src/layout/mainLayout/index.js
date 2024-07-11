@@ -12,7 +12,11 @@ function MainLayout({ children }) {
   const { isShowRegisterForm } = useSelector((state) => state.global);
   return (
     <div id="mainWrapper">
-      {isShowRegisterForm && <RegisterDialog />}
+      {isShowRegisterForm && <RegisterDialog />}{" "}
+      {/* &&: öncesindeki değer var ise sağdaqki durumu çalıştırır.
+      önceki değer yok ise sağdaki durumu çalıştırmaz. 
+      ||: soldaki değer varsa soldaki değeri çalıştırır. soldaki değer yoksa sağdaki değeri çalıştırır.
+      */}
       {error && (
         <ErrorDialog
           title={errorTitle}

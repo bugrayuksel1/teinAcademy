@@ -11,6 +11,10 @@ import loadingGif from "./gifs/ZKZg.gif";
 import user from "./images/user.png";
 import errorDialogCloseIcon from "./icons/errorDialogCloseIcon.png";
 import dropDownIcon from "./icons/dropDownIcon.png";
+import cardActiveIcon from "./icons/cardActiveIcon.png";
+import hoursIcon from "./icons/hoursIcon.png";
+import inprogressIcon from "./icons/inprogressIcon.png";
+import scoreIcon from "./icons/scoreIcon.png";
 
 const assets = {
   logos: {
@@ -27,6 +31,10 @@ const assets = {
     menuIcon8,
     errorDialogCloseIcon,
     dropDownIcon,
+    cardActiveIcon,
+    hoursIcon,
+    inprogressIcon,
+    scoreIcon,
   },
   images: {
     user,

@@ -1,30 +1,15 @@
 import styles from "./dashboard.module.css";
-import Info from "./components/info";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import User from "./components/user";
+import Public from "./components/public";
 
 function Dashboard() {
-  const [isTitleActive, setIsTitleActive] = useState(true);
-
-  useEffect(() => {
-    axios.post("http://localhost/hmac", {
-      param1: "test1",
-      param2: "test2",
-      param3: "test3",
-    });
-  }, []);
+  const { isLoggedIn } = useSelector((state) => state.user.userInfo);
 
   return (
-    <div className={styles.container}>
-      {isTitleActive && <h1>Tein Academy</h1>}
-      <Info />
-      <button
-        style={{ backgroundColor: isTitleActive ? "blue" : "red" }}
-        onClick={() => setIsTitleActive(!isTitleActive)}
-      >
-        toggle Title Status Change
-      </button>
-    </div>
+    <div className={styles.container}>{isLoggedIn ? <User /> : <Public />}</div>
   );
 }
 
