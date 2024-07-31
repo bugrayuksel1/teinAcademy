@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(233, 233, 233);
+  width: 20%;
+  min-width: 200px;
+  height: 100vh;
+  box-shadow: 3px 0 5px #97979750;
+  z-index: 2;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+}

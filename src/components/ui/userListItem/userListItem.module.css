@@ -1,0 +1,39 @@
+.userList {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  align-items: center;
+}
+
+.userName {
+  width: 20%;
+}
+.fullName {
+  width: 30%;
+}
+.eMail {
+  width: 30%;
+}
+.role {
+  width: 10%;
+}
+.updateButton {
+  width: 10%;
+  display: flex;
+  justify-content: flex-end;
+}
+.updateButton button {
+  border-radius: 4px;
+  background-color: #577b8d;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  border: 0;
+  padding: 10px 20px;
+  min-width: 40px;
+  cursor: pointer;
+  transition: all 0.7s;
+}
+.updateButton button:hover {
+  background-color: #91d5f7;
+  box-shadow: 0px 0px 4px rgb(54, 54, 54);
+}

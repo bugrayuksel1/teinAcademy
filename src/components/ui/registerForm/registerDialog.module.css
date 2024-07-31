@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100vh;
+  backdrop-filter: blur(2px);
+  z-index: 99999999;
+}
+.registerFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 400px;
+  height: 500px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px #00000020;
+}
+.closeIcon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+}
+.inputArea {
+  display: flex;
+}
+.atomText {
+  margin-top: 10px;
+}
+.atomText input {
+  width: 300px;
+}
+.buttonArea {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.buttonArea button {
+  background-color: darkgray;
+  border: 0;
+  padding: 10px 25px;
+  border-radius: 7px;
+  font-weight: 900;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 0 5px #00000070;
+}

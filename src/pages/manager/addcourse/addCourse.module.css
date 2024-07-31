@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 25px;
+}
+
+.inputStyle {
+  margin-top: 10px;
+}
+.inputStyle input {
+  width: 300px;
+}
+.submitButton {
+  margin-top: 20px;
+}

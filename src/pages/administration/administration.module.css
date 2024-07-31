@@ -1,0 +1,25 @@
+.container {
+  width: 60vw;
+  height: 100vh;
+  background-color: #e8eff6;
+}
+.userBox {
+  margin-top: 20px;
+  background-color: antiquewhite;
+}
+.inputLabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+.filterText {
+  margin-right: 10px;
+}
+.inputElement {
+  border: 0;
+  outline: 0;
+  background-color: aliceblue;
+  padding: 15px;
+  border-radius: 10px;
+}

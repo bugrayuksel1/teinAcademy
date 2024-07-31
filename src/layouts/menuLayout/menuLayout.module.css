@@ -1,0 +1,59 @@
+.container {
+  width: 20vw;
+  height: 100vh;
+  background-color: #002979;
+}
+
+.logoLayer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+.logoLayer img {
+  width: 60%;
+  height: auto;
+  margin-top: 40px;
+}
+
+.mainMenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+}
+
+.teamsMenu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+}
+
+.teamsMenuTitle {
+  padding: 10px 50px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #cccccc;
+}
+
+.teamsMenuItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 50px;
+  margin-top: 15px;
+}
+.teamsMenuItem img {
+  width: 20px;
+  height: auto;
+}
+.teamsMenuItem span {
+  margin-left: 25px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #cccccc;
+}

@@ -1,0 +1,61 @@
+.container {
+  width: 80%;
+  min-width: calc(100% - 200px);
+  height: auto;
+  min-height: 100vh;
+  margin-left: 20px;
+}
+.userList {
+  border: 1px solid rgb(168, 167, 167);
+  max-width: calc(100% - 100px);
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.userList > :nth-child(odd) {
+  background-color: #b3c8cf;
+}
+.userList > :nth-child(even) {
+  background-color: #bed7dc;
+}
+.userUpdateForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.atomInputOverRide {
+  margin-top: 15px;
+}
+.atomInputOverRide input {
+  width: 350px;
+}
+
+.formArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 500px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #00000050;
+}
+.button {
+  margin-top: 30px;
+}
+.closeIcon {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  cursor: pointer;
+}
+.testButton {
+  background-color: white !important;
+}

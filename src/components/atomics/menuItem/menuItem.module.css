@@ -1,0 +1,17 @@
+.mainMenuItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 50px;
+  margin-top: 15px;
+}
+.mainMenuItem img {
+  width: 20px;
+  height: auto;
+}
+.mainMenuItem span {
+  margin-left: 25px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #cccccc;
+}
