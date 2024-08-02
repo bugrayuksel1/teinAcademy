@@ -1,28 +1,23 @@
 import React, { useEffect } from "react";
 import styles from "./administration.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import assets from "../../assets";
-import { getUsersData, filterUsersData, cleanUp } from "../../redux/usersSlice";
-import Image from "next/image";
+import { filterUsersData, setUserData } from "../../redux/usersSlice";
 import MainLayout from "@/layouts/mainLayout";
+import axios from "axios";
 
-function Administration() {
+function Administration({ userServerData }) {
   const dispatch = useDispatch();
-  const { usersData, loading, errorMessage } = useSelector(
-    (state) => state.users
-  );
-
+  const { usersData } = useSelector((state) => state.users);
   const filterData = (param) => {
     dispatch(filterUsersData(param));
   };
 
   useEffect(() => {
-    dispatch(getUsersData());
-    return () => {
-      dispatch(cleanUp());
-    };
+    dispatch(setUserData(userServerData));
   }, []);
-
+  if (userServerData && userData.length > 10) {
+  }
+  const data = usersData || userServerData;
   return (
     <MainLayout>
       <div className={styles.container}>
@@ -35,13 +30,8 @@ function Administration() {
             onChange={(e) => filterData(e.target.value)}
           />
         </div>
-        {loading && <Image alt="loading gif" src={assets.gifs.loadingGif} />}
-        {errorMessage && (
-          <div>
-            <h2 style={{ color: "red" }}>{errorMessage}</h2>
-          </div>
-        )}
-        {usersData.map((donenData) => {
+
+        {data?.map((donenData) => {
           return (
             <div className={styles.userBox}>
               <h1>{donenData.name}</h1>
@@ -50,7 +40,7 @@ function Administration() {
             </div>
           );
         })}
-        {usersData.length === 0 && (
+        {data?.length === 0 && (
           <div>
             <h1>Kriterlere uygun data bulunamadı.</h1>
           </div>
@@ -61,3 +51,9 @@ function Administration() {
 }
 
 export default Administration;
+export const getServerSideProps = async () => {
+  const response = await axios.get(
+    "https://jsonplaceholder.typicode.com/users"
+  );
+  return { props: { userServerData: response.data } };
+};
