@@ -15,7 +15,7 @@ function Administration({ userServerData }) {
   useEffect(() => {
     dispatch(setUserData(userServerData));
   }, []);
-  if (userServerData && userData.length > 10) {
+  if (userServerData && usersData.length > 10) {
   }
   const data = usersData || userServerData;
   return (

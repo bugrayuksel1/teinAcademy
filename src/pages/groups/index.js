@@ -1,32 +1,22 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../redux/groupsSlice";
 import MainLayout from "@/layouts/mainLayout";
+import axios from "axios";
+import GroupsElement from "@/components/ui/groupsElement";
 
-function Groups() {
-  const dispatch = useDispatch();
-  const { users } = useSelector((state) => state.groups);
-
-  useEffect(() => {
-    dispatch(getUsers());
-  }, []);
-
+function Grades({ postData }) {
   return (
     <MainLayout>
       <div>
-        {users.map((user) => {
-          return (
-            <div style={{ margin: "20px", backgroundColor: "#DDDDDD" }}>
-              <h1>{user.user_name}</h1>
-              <h2>{user.full_name}</h2>
-              <h2>{user.role}</h2>
-              <h2>{user.e_mail}</h2>
-            </div>
-          );
-        })}
+        <GroupsElement items={postData} />
       </div>
     </MainLayout>
   );
 }
 
-export default Groups;
+export default Grades;
+
+export const getServerSideProps = async () => {
+  const response = await axios.get("http://localhost/users");
+  return {
+    props: { postData: response?.data },
+  };
+};

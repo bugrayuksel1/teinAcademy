@@ -5,7 +5,7 @@ import ErrorDialog from "../../components/ui/errorDialog";
 import { useSelector } from "react-redux";
 import RegisterDialog from "../../components/ui/registerForm";
 
-function MainLayout({ children }) {
+function MainLayout({ kukiToken, children }) {
   const { error, errorTitle, errorMessage } = useSelector(
     (state) => state.error
   );
@@ -27,7 +27,7 @@ function MainLayout({ children }) {
       )}
       <MenuLayout />
       {children}
-      <ProfileLayout />
+      <ProfileLayout kukiToken={kukiToken} />
     </div>
   );
 }

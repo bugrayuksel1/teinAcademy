@@ -9,13 +9,14 @@ import { toggleRegisterForm } from "../../redux/globalSlice";
 import AtomInput from "../../components/atomics/atomInput";
 import Image from "next/image";
 
-function ProfileLayout() {
+function ProfileLayout({ kukiToken }) {
   const dispatch = useDispatch();
   const { isLoggedIn, user_name, e_mail, role, full_name } = useSelector(
     (state) => state.user.userInfo
   );
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  console.log(kukiToken, "kkk");
 
   const handleLogin = async () => {
     if (userName === "" || password === "") {
@@ -55,7 +56,7 @@ function ProfileLayout() {
         <div className={styles.profile}>
           <Image alt="profil" src={assets.images.user} />
         </div>
-        {!isLoggedIn && (
+        {(!isLoggedIn || !kukiToken) && (
           <>
             <div className={styles.userName}>
               <AtomInput
@@ -84,26 +85,26 @@ function ProfileLayout() {
             </div>
           </>
         )}
-        {isLoggedIn && (
+        {(isLoggedIn || kukiToken) && (
           <div className={styles.userInfo}>
             <div className={styles.userInfoLine}>
               <span>
-                Name: <b>{full_name}</b>
+                Name: <b>{full_name ? full_name : ""}</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                Username: <b>{user_name}</b>
+                Username: <b> {user_name ? user_name : ""}</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                E-mail: <b>{e_mail}</b>
+                E-mail: <b>{e_mail ? e_mail : ""}</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                Account Type: <b>{role}</b>
+                Account Type: <b>{role ? role : ""}</b>
               </span>
             </div>
             <div className={styles.logoutButton}>
