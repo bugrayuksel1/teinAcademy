@@ -51,7 +51,7 @@ function Administration({ userServerData }) {
 }
 
 export default Administration;
-export const getServerSideProps = async () => {
+export const getServerSideProps = async (context) => {
   const response = await axios.get(
     "https://jsonplaceholder.typicode.com/users"
   );

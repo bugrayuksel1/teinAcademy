@@ -56,7 +56,7 @@ function ProfileLayout({ kukiToken }) {
         <div className={styles.profile}>
           <Image alt="profil" src={assets.images.user} />
         </div>
-        {(!isLoggedIn || !kukiToken) && (
+        {!kukiToken && (
           <>
             <div className={styles.userName}>
               <AtomInput
@@ -85,26 +85,26 @@ function ProfileLayout({ kukiToken }) {
             </div>
           </>
         )}
-        {(isLoggedIn || kukiToken) && (
+        {kukiToken && (
           <div className={styles.userInfo}>
             <div className={styles.userInfoLine}>
               <span>
-                Name: <b>{full_name ? full_name : ""}</b>
+                Name: <b>asd</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                Username: <b> {user_name ? user_name : ""}</b>
+                Username: <b> dfg</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                E-mail: <b>{e_mail ? e_mail : ""}</b>
+                E-mail: <b>ghj</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                Account Type: <b>{role ? role : ""}</b>
+                Account Type: <b>jkl</b>
               </span>
             </div>
             <div className={styles.logoutButton}>
