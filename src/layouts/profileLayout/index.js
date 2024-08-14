@@ -17,17 +17,6 @@ function ProfileLayout() {
   );
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [userData, setUserData] = useState({});
-
-  useEffect(() => {
-    setUserData({
-      isLoggedIn,
-      user_name,
-      e_mail,
-      role,
-      full_name,
-    });
-  }, []);
 
   const handleLogin = async () => {
     if (userName === "" || password === "") {
@@ -67,7 +56,7 @@ function ProfileLayout() {
         <div className={styles.profile}>
           <Image alt="profil" src={assets.images.user} />
         </div>
-        {!userData?.isLoggedIn && (
+        {!isLoggedIn && (
           <>
             <div className={styles.userName}>
               <AtomInput
@@ -96,26 +85,26 @@ function ProfileLayout() {
             </div>
           </>
         )}
-        {userData?.isLoggedIn && (
+        {isLoggedIn && (
           <div className={styles.userInfo}>
             <div className={styles.userInfoLine}>
               <span>
-                Name: <b>{userData?.full_name}</b>
+                Name: <b>{full_name}</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                Username: <b>{userData?.user_name}</b>
+                Username: <b>{user_name}</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                E-mail: <b>{userData?.e_mail}</b>
+                E-mail: <b>{e_mail}</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                Account Type: <b>{userData?.role}</b>
+                Account Type: <b>{role}</b>
               </span>
             </div>
             <div className={styles.logoutButton}>
