@@ -15,7 +15,8 @@ import cardActiveIcon from "./icons/cardActiveIcon.png";
 import hoursIcon from "./icons/hoursIcon.png";
 import inprogressIcon from "./icons/inprogressIcon.png";
 import scoreIcon from "./icons/scoreIcon.png";
-
+import courseCardProfileIcon from "./icons/courseCardProfileIcon.png";
+import courseCardTitleIcon from "./icons/courseCardTitleIcon.png";
 const assets = {
   logos: {
     logo,
@@ -35,6 +36,8 @@ const assets = {
     hoursIcon,
     inprogressIcon,
     scoreIcon,
+    courseCardProfileIcon,
+    courseCardTitleIcon,
   },
   images: {
     user,

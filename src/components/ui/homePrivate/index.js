@@ -4,9 +4,22 @@ import InfoCard from "../../atomics/infoCard";
 import assets from "../../../assets";
 import ProgressBar from "../../atomics/progressBar";
 import StaticsProgressBar from "../../atomics/staticsProgressBar";
+import CourseProgressCard from "../courseProgressCard";
+import axios from "axios";
 function HomePrivate() {
   const testref = useRef(null);
   const test3ref = useRef(null);
+  const [graphicCardData, setGraphiccardData] = useState([]);
+
+  useEffect(() => {
+    const getGraphicData = async () => {
+      const response = await axios.get("http://localhost/graphicdata");
+      setGraphiccardData(response?.data);
+    };
+    getGraphicData();
+  }, []);
+  console.log(graphicCardData, "grafikkart");
+
   const data = [
     {
       title: "Courses in Progress",
@@ -161,8 +174,22 @@ function HomePrivate() {
           </div>
         </div>
       </div>
-      <div>
+      {/* <div>
         <ProgressBar />
+      </div> */}
+      <div className={styles.graphicContainer}>
+        {graphicCardData.map((item) => {
+          return (
+            <CourseProgressCard
+              title={item.title}
+              colorBackground={item.colorBackground}
+              color1={item.color1}
+              color2={item.color2}
+              name={item.name}
+              colorPercent={item.colorPercenthttps://github.com/bugrayuksel1/teinAcademyBackend.git}
+            />
+          );
+        })}
       </div>
     </div>
   );
