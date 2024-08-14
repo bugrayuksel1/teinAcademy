@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./profileLayout.module.css";
 import assets from "../../assets";
 import axios from "axios";
@@ -9,14 +9,25 @@ import { toggleRegisterForm } from "../../redux/globalSlice";
 import AtomInput from "../../components/atomics/atomInput";
 import Image from "next/image";
 
-function ProfileLayout({ kukiToken }) {
+function ProfileLayout() {
   const dispatch = useDispatch();
+
   const { isLoggedIn, user_name, e_mail, role, full_name } = useSelector(
     (state) => state.user.userInfo
   );
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  console.log(kukiToken, "kkk");
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    setUserData({
+      isLoggedIn,
+      user_name,
+      e_mail,
+      role,
+      full_name,
+    });
+  }, []);
 
   const handleLogin = async () => {
     if (userName === "" || password === "") {
@@ -56,7 +67,7 @@ function ProfileLayout({ kukiToken }) {
         <div className={styles.profile}>
           <Image alt="profil" src={assets.images.user} />
         </div>
-        {!kukiToken && (
+        {!userData?.isLoggedIn && (
           <>
             <div className={styles.userName}>
               <AtomInput
@@ -85,26 +96,26 @@ function ProfileLayout({ kukiToken }) {
             </div>
           </>
         )}
-        {kukiToken && (
+        {userData?.isLoggedIn && (
           <div className={styles.userInfo}>
             <div className={styles.userInfoLine}>
               <span>
-                Name: <b>asd</b>
+                Name: <b>{userData?.full_name}</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                Username: <b> dfg</b>
+                Username: <b>{userData?.user_name}</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                E-mail: <b>ghj</b>
+                E-mail: <b>{userData?.e_mail}</b>
               </span>
             </div>
             <div className={styles.userInfoLine}>
               <span>
-                Account Type: <b>jkl</b>
+                Account Type: <b>{userData?.role}</b>
               </span>
             </div>
             <div className={styles.logoutButton}>

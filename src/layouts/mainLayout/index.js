@@ -1,6 +1,6 @@
-import React from "react";
+import dynamic from "next/dynamic";
 import MenuLayout from "../menuLayout";
-import ProfileLayout from "../profileLayout";
+const ProfileLayout = dynamic(() => import("../profileLayout"), { ssr: false });
 import ErrorDialog from "../../components/ui/errorDialog";
 import { useSelector } from "react-redux";
 import RegisterDialog from "../../components/ui/registerForm";

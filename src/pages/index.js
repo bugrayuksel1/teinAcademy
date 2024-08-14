@@ -23,6 +23,6 @@ export const getServerSideProps = (context) => {
   const cookies = req.headers.cookie;
 
   return {
-    props: { kukiToken: cookies.split("=")?.[1] },
+    props: { kukiToken: cookies?.split("=")?.[1] },
   };
 };
