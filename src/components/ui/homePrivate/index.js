@@ -6,19 +6,23 @@ import ProgressBar from "../../atomics/progressBar";
 import StaticsProgressBar from "../../atomics/staticsProgressBar";
 import CourseProgressCard from "../courseProgressCard";
 import axios from "axios";
+import { useSelector } from "react-redux";
+
 function HomePrivate() {
   const testref = useRef(null);
   const test3ref = useRef(null);
   const [graphicCardData, setGraphiccardData] = useState([]);
+  const { userInfo } = useSelector((state) => state.user);
 
   useEffect(() => {
     const getGraphicData = async () => {
-      const response = await axios.get("http://localhost/graphicdata");
+      const response = await axios.post("http://localhost/coursestatistics", {
+        userName: userInfo.user_name,
+      });
       setGraphiccardData(response?.data);
     };
     getGraphicData();
   }, []);
-  console.log(graphicCardData, "grafikkart");
 
   const data = [
     {
@@ -45,57 +49,16 @@ function HomePrivate() {
 
   const statisticData1 = [
     {
-      day: "SAT",
-    },
-    {
-      day: "SUN",
-    },
-    {
-      day: "MON",
-    },
-    {
-      day: "TUE",
-    },
-    {
-      day: "WED",
-    },
-    {
-      day: "THU",
-    },
-    {
-      day: "FRI",
+      mon: "0",
+      tue: "0",
+      wed: "0",
+      thu: "0",
+      fri: "0",
+      sat: "0",
+      sun: "0",
     },
   ];
-  const statisticData2 = [
-    {
-      day: "SAT",
-      statistic: "15",
-    },
-    {
-      day: "SUN",
-      statistic: "70",
-    },
-    {
-      day: "MON",
-      statistic: "45",
-    },
-    {
-      day: "TUE",
-      statistic: "50",
-    },
-    {
-      day: "WED",
-      statistic: "95",
-    },
-    {
-      day: "THU",
-      statistic: "60",
-    },
-    {
-      day: "FRI",
-      statistic: "65",
-    },
-  ];
+
   const circleProgressBarData = {
     test: 40,
     test3: 60,
@@ -107,7 +70,15 @@ function HomePrivate() {
 
   const [statisticData, setStatisticData] = useState(statisticData1);
   useEffect(() => {
-    setStatisticData(statisticData2);
+    const getStatisticData = async () => {
+      const response = await axios.post("http://localhost/weeklyuserdata", {
+        userName: userInfo.user_name,
+      });
+      setStatisticData(response?.data);
+      console.log(response, "respp");
+    };
+    getStatisticData();
+
     let i = 0;
     let x = 0;
     const animation = setInterval(() => {
@@ -126,6 +97,24 @@ function HomePrivate() {
     };
   }, []);
 
+  const colorData = [
+    {
+      colorBackground: "#9747FF40",
+      color1: "gray",
+      color2: "yellow",
+    },
+    {
+      colorBackground: "#2F80ED40",
+      color1: "red",
+      color2: "yellow",
+    },
+    {
+      colorBackground: "#56CCF240",
+      color1: "pink",
+      color2: "blue",
+    },
+  ];
+
   return (
     <div className={styles.container}>
       <div className={styles.cardContainer}>
@@ -142,13 +131,13 @@ function HomePrivate() {
             <span>Week</span>
           </div>
           <div className={styles.studyProgress}>
-            {statisticData.map((item) => {
-              return <StaticsProgressBar progress={item?.statistic} />;
+            {Object?.entries(statisticData[0]).map((item) => {
+              return <StaticsProgressBar progress={item[1]} />;
             })}
           </div>
           <div className={styles.studyBottom}>
-            {statisticData.map((item) => {
-              return <span>{item.day}</span>;
+            {Object?.entries(statisticData[0]).map((item) => {
+              return <span>{item[0]}</span>;
             })}
           </div>
         </div>
@@ -178,15 +167,15 @@ function HomePrivate() {
         <ProgressBar />
       </div> */}
       <div className={styles.graphicContainer}>
-        {graphicCardData.map((item) => {
+        {graphicCardData.map((item, i) => {
           return (
             <CourseProgressCard
-              title={item.title}
-              colorBackground={item.colorBackground}
-              color1={item.color1}
-              color2={item.color2}
-              name={item.name}
-              colorPercent={item.colorPercenthttps://github.com/bugrayuksel1/teinAcademyBackend.git}
+              title={item.user_name}
+              colorBackground={colorData[i].colorBackground}
+              color1={colorData[i].color1}
+              color2={colorData[i].color2}
+              name={item.user_name}
+              colorPercent={item.course_percent}
             />
           );
         })}
